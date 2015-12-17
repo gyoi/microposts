@@ -8,7 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Microposts
   class Application < Rails::Application
-    config.active_record.raise_in_transactional_callbacks = true
+# 以下を無効にしないとcustom.scssを基にcssファイルが自動生成されレイアウトが崩れる
+#    config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
       g.stylesheets false
