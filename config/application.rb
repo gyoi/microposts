@@ -8,12 +8,13 @@ Bundler.require(*Rails.groups)
 
 module Microposts
   class Application < Rails::Application
+    config.active_record.raise_in_transactional_callbacks = true
+
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
       g.helper false
       g.test_framework false
     end
-i#    config.active_record.raise_in_transactional_callbacks = true
   end
 end
