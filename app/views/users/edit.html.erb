@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<h1>ユーザ情報変更</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -12,13 +12,25 @@
       <%= f.label :email, "メール" %>
       <%= f.text_field :email %>
 
+      <%= f.label :profile, "プロフィール" %>
+      <%= f.text_field :profile %>
+
+      <%= f.label :location, "お住まいの地域" %>
+      <%= f.text_field :location %>
+
+      <%= f.label :age, "年齢" %>
+      <%= f.text_field :age %>
+
+      <%= f.label :birthday, "誕生日（入力例：1111）" %>
+      <%= f.text_field :birthday %>
+
       <%= f.label :password, "パスワード" %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "パスワード確認" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.submit "submit!!", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
