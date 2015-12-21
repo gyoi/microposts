@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   
   #認証機能の追加
   has_secure_password
+  
+  #micropost機能との連携。各ユーザは複数投稿を持てる。
+  has_many :microposts
 end
