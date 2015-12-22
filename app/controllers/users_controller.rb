@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   # sighup後の詳細表示画面(/users/[id])
   def show
+    @user = User.find(params[:id])
+    # ユーザーに紐付いたマイクロポストを作成日時が新しいものから取得
+    @microposts = @user.microposts.order(created_at: :desc)
   end
   
   # signup用
@@ -13,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "signup success!!"
