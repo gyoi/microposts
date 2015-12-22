@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :profile, presence: true, length: { maximum: 50 }
-  validates :location, presence: true, length: { maximum: 50 }
+  validates :profile, presence: true, length: { maximum: 50 }, on: :update
+  validates :location, presence: true, length: { maximum: 50 }, on: :update
   validates :age , length: { maximum: 3 } , allow_blank: true ,  numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :birthday, length: { maximum: 4 } , allow_blank: true ,  numericality: { only_integer: true, greater_than_or_equal_to: 4 }
   
