@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include SessionsHelper
-  before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :set_user, only: [:show]
+  before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
   # sighup後の詳細表示画面(/users/[id])
@@ -18,8 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "signup success!!"
-      # 詳細表示画面もログイン後かつ正しいユーザのみアクセスさせるため、
-      # まずはログインさせる
+      # 詳細表示画面もログイン後にアクセス可能とする
       redirect_to login_url
     else
       # エラーメッセージ(@user.error)を含めてsignup画面をレンダリング
