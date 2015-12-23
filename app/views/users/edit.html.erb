@@ -7,30 +7,30 @@
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name, "お名前" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email, "メール" %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, class: 'form-control' %>
 
       <%= f.label :profile, "プロフィール" %>
-      <%= f.text_field :profile %>
+      <%= f.text_field :profile, class: 'form-control' %>
 
       <%= f.label :location, "お住まいの地域" %>
-      <%= f.text_field :location %>
+      <%= f.text_field :location, class: 'form-control' %>
 
       <%= f.label :age, "年齢" %>
-      <%= f.text_field :age %>
+      <%= f.text_field :age, class: 'form-control' %>
 
       <%= f.label :birthday, "誕生日（入力例：1111）" %>
-      <%= f.text_field :birthday %>
+      <%= f.text_field :birthday, class: 'form-control' %>
 
       <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "パスワード確認" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "submit!!", class: "btn btn-large btn-primary" %>
+      <%= f.submit "変更しますよ!!", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
