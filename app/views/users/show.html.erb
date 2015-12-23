@@ -10,7 +10,7 @@
         <div class="panel-heading">
           <div class="panel-title">
           <span class="glyphicon glyphicon-tree-deciduous"></span>
-            あなたの登録済み情報ですよ
+          <%= @user.name %>さんの登録済み情報です
           </div>
         </div>
         <div class="panel-body">
@@ -68,6 +68,25 @@
              <%= render @microposts %>
            </ol>
           <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="icon col-sm-3 hidden-xs">
+      <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"> フォロー用</span>
+        <div class="icon-caption"></div>
+    </div>
+    <div class="content col-sm-9">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+          <span class="glyphicon glyphicon-link"></span>
+            フォロー/アンフォロー
+          </div>
+        </div>
+        <div class="panel-body">
+    <%= render 'follow_form' if logged_in? %>
         </div>
       </div>
     </div>
