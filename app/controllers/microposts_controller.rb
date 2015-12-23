@@ -10,9 +10,10 @@ class MicropostsController < ApplicationController
       render 'static_pages/home'
     end
   end
-  
+   
   def destroy
     @micropost = current_user.microposts.find_by(id: params[:id])
+    binding.pry
     return redirect_to root_url if @micropost.nil?
     @micropost.destroy
     flash[:success] = "Micropost deleted"
