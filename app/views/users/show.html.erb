@@ -47,22 +47,28 @@
       </div>
     </div>
   </div>
-
-<div class="row">
-  <aside class="col-md-3">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-  <div class="col-md-9">
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-    <% end %>
+  <div class="row">
+    <div class="icon col-sm-3 hidden-xs">
+      <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"> これまでのつぶやき</span>
+        <div class="icon-caption"></div>
+    </div>
+    <div class="content col-sm-9">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+          <span class="glyphicon glyphicon-leaf"></span>
+            <% if @user.microposts.any? %>
+             これまでのつぶやき件数：<%= @user.microposts.count %>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-body">
+          <% if @user.microposts.any? %>
+           <ol class="microposts">
+             <%= render @microposts %>
+           </ol>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>

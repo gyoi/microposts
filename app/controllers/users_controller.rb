@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   include SessionsHelper
+  before_action :set_user, only: [:show]
   before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:show, :edit, :update]
-
+  before_action :correct_user, only: [:edit, :update]
+  
   # sighup後の詳細表示画面(/users/[id])
   def show
     @user = User.find(params[:id])
@@ -63,6 +64,10 @@ class UsersController < ApplicationController
       flash[:danger] = "まずはログインしてくださいね"
       redirect_to login_url
     end
+  end
+  
+  def set_user
+    @user = User.find(params[:id])
   end
 
   #正しいユーザーかどうか確認
