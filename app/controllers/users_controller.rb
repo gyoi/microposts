@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # sighup後の詳細表示画面(/users/[id])
   def show
     # ユーザーに紐付いたマイクロポストを作成日時が新しいものから取得
-    @microposts = @user.microposts.order(created_at: :desc)
+    @microposts = @user.microposts.order(created_at: :desc).page(params[:page])
   end
   
   # signup用
@@ -41,15 +41,14 @@ class UsersController < ApplicationController
   end
 
   def following
-
     @title = "フォロー"
-    @users = @user.following_users
+    @users = @user.following_users.page(params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "フォロワー"
-    @users = @user.follower_users
+    @users = @user.follower_users.page(params[:page])
     render 'show_follow'
   end
   
