@@ -1,0 +1,18 @@
+<%# @userがnillの場合、current_userを代入%>
+<%# homeではcurrent_userの情報を表示、show画面では指定ユーザの情報を表示させる%>
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <b>フォロー
+    <strong id="following" class="stat">
+      <%= @user.following_relationships.count %>
+    </strong></b>
+  </a>
+  <br>
+  <a href="<%= followers_user_path(@user) %>">
+    <b>フォロワー
+    <strong id="followers" class="stat">
+      <%= @user.follower_relationships.count %></b>
+    </strong>
+  </a>
+</div>

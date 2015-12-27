@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   include SessionsHelper
-  before_action :set_user, only: [:show]
-  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :following, :followers]
+  before_action :logged_in_user, only: [:show, :edit, :update, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
 
   # sighup後の詳細表示画面(/users/[id])
   def show
-    @user = User.find(params[:id])
     # ユーザーに紐付いたマイクロポストを作成日時が新しいものから取得
     @microposts = @user.microposts.order(created_at: :desc)
   end
@@ -41,6 +40,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+
+    @title = "フォロー"
+    @users = @user.following_users
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @users = @user.follower_users
+    render 'show_follow'
+  end
   private
 
   #singup用。signupは簡単にするため登録情報は少なめに。
@@ -73,6 +84,7 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     unless @user == current_user
+      flash[:danger] = "不正なアクセスですよ"
       redirect_to root_url
     end
   end

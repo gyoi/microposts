@@ -1,4 +1,12 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.name %></h1>
-<span><%= link_to "view my profile", current_user %></span>
-<span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+<%# 自身か他ユーザかで表示内容を変更%>
+<% @user ||= current_user %>
+<h1>
+  <%= link_to gravatar_for(@user, size: 50), @user %>
+  <%= @user.name %>
+</h1>
+<span>
+  <b><%= link_to "プロフィール", @user %></b>
+</span>
+<span>
+  <b><%= pluralize(@user.microposts.count, "") %>件つぶやいているようです</b>
+  </span>

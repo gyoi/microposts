@@ -1,93 +1,37 @@
-<h1>ユーザ情報</h1>
-
-  <div class="row">
-    <div class="icon col-sm-3 hidden-xs">
-      <span class="glyphicon glyphicon glyphicon-log-in" aria-hidden="true"> ユーザ情報確認用</span>
-        <div class="icon-caption"></div>
-    </div>
-    <div class="content col-sm-9">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <div class="panel-title">
-          <span class="glyphicon glyphicon-tree-deciduous"></span>
-            <%= @user.name %>さんの登録済み情報ですよ
-          </div>
-        </div>
-        <div class="panel-body">
-          <%# #GravatarサービスからHTML出力。app/helpers/users_helper.rbのヘルパーと連携 %>
-          <%= gravatar_for @user %><br><br>
-          <ul>
-            <li>名前：<%= @user.name %></li>
-            <li>メール：<%= @user.email %></li>
-            <li>プロフィール：<%= @user.profile %></li>
-            <li>お住まいの地域：<%= @user.location %></li>
-            <li>年齢：<%= @user.age %></li>
-            <li>誕生日：<%= @user.birthday %></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+        <%= render 'shared/user_info' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="profile">
+      <ul>
+        <b>
+        <li>名前：<%= @user.name %></li>
+        <li>メール：<%= @user.email %></li>
+        <li>プロフィール：<%= @user.profile %></li>
+        <li>お住まいの地域：<%= @user.location %></li>
+        <li>年齢：<%= @user.age %></li>
+        <li>誕生日：<%= @user.birthday %></li>
+        </b>
+      </ul>
+    </section>
+<%#>プロフィール変更用リンク設置。自身のプロフィール画面の場合のみリンク生成<%>
+<section =class="edit profile">
+<% if @user == current_user %>
+<%= link_to "プロフィールを変更する" , edit_user_path %>
+<% end %>
+</section>
+  </aside>
+  <div class="col-md-8">
+    <%# フォロー・アンフォローボタン設置 %>
+    <%= render 'follow_form' if logged_in? %> <br>
+      <% if @user.microposts.any? %>
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+      <% end %>
   </div>
-  <div class="row">
-    <div class="icon col-sm-3 hidden-xs">
-      <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"> ユーザ情報変更用</span>
-        <div class="icon-caption"></div>
-    </div>
-    <div class="content col-sm-9">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <div class="panel-title">
-          <span class="glyphicon glyphicon-leaf"></span>
-            登録情報を変更したい場合はこちら <br>　　（本人でない場合はトップ画面に戻りますよ）
-          </div>
-        </div>
-        <div class="panel-body">
-        <%= link_to "ユーザ情報変更" , edit_user_path %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="icon col-sm-3 hidden-xs">
-      <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"> これまでのつぶやき</span>
-        <div class="icon-caption"></div>
-    </div>
-    <div class="content col-sm-9">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <div class="panel-title">
-          <span class="glyphicon glyphicon-leaf"></span>
-            <% if @user.microposts.any? %>
-             これまでのつぶやき件数：<%= @user.microposts.count %>
-            <% end %>
-          </div>
-        </div>
-        <div class="panel-body">
-          <% if @user.microposts.any? %>
-           <ol class="microposts">
-             <%= render @microposts %>
-           </ol>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="icon col-sm-3 hidden-xs">
-      <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"> フォロー用</span>
-        <div class="icon-caption"></div>
-    </div>
-    <div class="content col-sm-9">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <div class="panel-title">
-          <span class="glyphicon glyphicon-link"></span>
-            フォロー/アンフォロー
-          </div>
-        </div>
-        <div class="panel-body">
-    <%= render 'follow_form' if logged_in? %>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
