@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     @users = @user.follower_users
     render 'show_follow'
   end
+  
   private
 
   #singup用。signupは簡単にするため登録情報は少なめに。
