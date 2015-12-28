@@ -3,12 +3,19 @@
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content"><%= micropost.content %></span>
   <%# ファイルアップロード用。carrierwave生成メソッド利用%>
-  <span class="picture"><%= image_tag micropost.picture.url if micropost.picture? %></span>
+  <% if micropost.picture? %>
+    <span class="picture_name">upload file:
+      <%= link_to micropost.picture_identifier, micropost.picture.url %>
+    </span><br>
+    <span class="picture">
+      <%= image_tag micropost.picture.url %>
+    </span>
+  <% end %>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     <% if current_user == micropost.user %>
       <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
+                                       data: { confirm: "気は確かですか？" } %>
     <% end %>
   </span>
 </li>

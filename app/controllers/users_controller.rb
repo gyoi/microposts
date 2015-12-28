@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   include SessionsHelper
   before_action :set_user, only: [:show, :following, :followers]
-  before_action :logged_in_user, only: [:show, :edit, :update, :following, :followers]
+  before_action :logged_in_user, only: [:show, :edit, :update, :following, :followers, :index]
   before_action :correct_user, only: [:edit, :update]
+
+  def index
+    @user = User.find(current_user)
+    @users = User.all
+  end
 
   # sighup後の詳細表示画面(/users/[id])
   def show

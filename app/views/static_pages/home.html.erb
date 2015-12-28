@@ -12,13 +12,16 @@
       </section>
     </aside>
     <div class="col-md-8">
-      <h3>Micropost Feed</h3>
+      <h3>ぎょい～と</h3>
       <%= render 'shared/feed' %>
     </div>
   </div>
 <% else %>
   <div class="center jumbotron">
-    <h1>Welcome to the Microposts</h1>
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+      御意!!> <%= content_tag :span, " ", class: "glyphicon glyphicon-user" %>
+    <h1>Gyoitter</h1>
+    <%= link_to "直ちにアカウント登録", signup_path, class: "btn btn-lg btn-primary" %><br><br>
+    <%= link_to "激しくログイン", login_path, class: "btn btn-lg btn-success" %>
   </div>
 <% end %>
+

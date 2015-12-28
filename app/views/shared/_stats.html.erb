@@ -3,16 +3,17 @@
 <% @user ||= current_user %>
 <div class="stats">
   <a href="<%= following_user_path(@user) %>">
-    <b>フォロー
+    <b>ふぉろ～
     <strong id="following" class="stat">
       <%= @user.following_relationships.count %>
     </strong></b>
   </a>
   <br>
   <a href="<%= followers_user_path(@user) %>">
-    <b>フォロワー
+    <b>ふぉろわ～
     <strong id="followers" class="stat">
       <%= @user.follower_relationships.count %></b>
     </strong>
   </a>
 </div>
+<b><%= link_to "ふぉろ～したいぎょいら～を探す", users_path %></b>

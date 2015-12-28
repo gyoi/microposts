@@ -17,13 +17,11 @@
         <li>誕生日：<%= @user.birthday %></li>
         </b>
       </ul>
+      <%#>プロフィール変更用リンク設置。自身のプロフィール画面の場合のみリンク生成<%>
+      <% if @user == current_user %>
+        <b><%= link_to "プロフィールを変更する" , edit_user_path %></b>
+      <% end %>
     </section>
-<%#>プロフィール変更用リンク設置。自身のプロフィール画面の場合のみリンク生成<%>
-<section =class="edit profile">
-<% if @user == current_user %>
-<%= link_to "プロフィールを変更する" , edit_user_path %>
-<% end %>
-</section>
   </aside>
   <div class="col-md-8">
     <%# フォロー・アンフォローボタン設置 %>

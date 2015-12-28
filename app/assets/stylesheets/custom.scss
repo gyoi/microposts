@@ -1,10 +1,11 @@
 @import "bootstrap-sprockets";
-@import "bootstrap";
+ @import "bootstrap";  
 
 /* universal */
 
 body {
   padding-top: 60px;
+    background-color: skyblue;
 }
 
 section {
@@ -56,15 +57,13 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
+  color: skyb;
   letter-spacing: -1px;
-  padding-top: 9px;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: #fff;
+  color: #fffe;
   text-decoration: none;
 }
 
@@ -188,4 +187,18 @@ aside {
 
 .gravatar_edit {
   margin-top: 15px;
+}
+
+.center jumbotron {
+      background-color: skyblue;
+}
+
+#gyoilogo {
+  padding: 0 10px 10px;
+}
+
+#gyoilogo img {
+  max-width: 120px;
+  border: 5px solid #fff;
+  border-radius: 100%;
 }

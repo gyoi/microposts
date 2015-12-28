@@ -5,6 +5,7 @@ class Micropost < ActiveRecord::Base
   #画像アップロード用
   mount_uploader :picture, PictureUploader
   validate  :picture_size
+
 end
 
   # アップロード画像のサイズを検証する
