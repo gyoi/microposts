@@ -14,3 +14,6 @@ end
       errors.add(:picture, "1MBまでですよ")
     end
   end
+
+  # 内容は必須入力かつ1文字以上150文字以下
+  validates :content , length: { minimum: 1, maximum: 150 } , presence: true
